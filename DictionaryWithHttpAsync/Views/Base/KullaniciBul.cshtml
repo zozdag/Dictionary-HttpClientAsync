@@ -1,0 +1,25 @@
+﻿@model IEnumerable<KeyValuePair<int,WebApiService.Models.UserModel>>
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>KullaniciBul</title>
+</head>
+<body>
+    @{ 
+        foreach(var k in Model)
+        {
+           @k.Key
+            @k.Value.Name
+            @k.Value.SurName
+        }
+    }
+
+
+</body>
+</html>

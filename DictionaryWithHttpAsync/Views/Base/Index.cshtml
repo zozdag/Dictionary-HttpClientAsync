@@ -1,0 +1,58 @@
+﻿@model Dictionary<int, WebApiService.Models.UserModel>
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+
+</head>
+<body>
+
+    <h1>Tüm Kullanıcılar</h1>
+    <p>
+        <h3>Kullanıcı Adıyla Ara</h3>
+        @using (Html.BeginForm("KullaniciBul", "Base", FormMethod.Post))
+        {
+            @Html.TextBox("Name")
+            <br />
+            <input type="submit" value="Ara" />
+        }
+    </p>
+    <p>
+        <table>
+            <thead>
+                <tr>
+                    <th>id</th>
+                    <th>Name</th>
+                    <th>Surname</th>
+                    <th>Job</th>
+                    <th>Salary</th>
+                    <th>Kullanıcıları Getir >@Html.ActionLink("Kullanıcıların Tümünü Listelemek için Tıklayın", "TumKullanicilar", "Base")</th>
+                </tr>
+            </thead>
+            <tbody>
+                @{
+                    if (Model != null)
+                    {
+                        foreach (var k in Model)
+                        {
+                            <tr>
+                                <td> @k.Key</td>
+                                <td> @k.Value.Name</td>
+                                <td> @k.Value.SurName</td>
+                                <td> @k.Value.Job</td>
+                                <td> @k.Value.Salary</td>
+                            </tr>
+                        }
+                    }
+                }
+            </tbody>
+        </table>
+    </p>
+</body>
+</html>
